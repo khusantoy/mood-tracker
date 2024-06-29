@@ -8,4 +8,10 @@ class QuestionsController extends ChangeNotifier {
   Stream<QuerySnapshot> get list {
     return _questionsFirebaseServices.getQuestions();
   }
+
+  int _correctAnswersCount = 0;
+
+  void addCorrectAnswer() {
+    _correctAnswersCount++;
+  }
 }

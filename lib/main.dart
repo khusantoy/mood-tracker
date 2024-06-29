@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:mood_tracker/controllers/questions_controller.dart';
 import 'package:mood_tracker/firebase_options.dart';
 import 'package:mood_tracker/views/screens/home_screen.dart';
-import 'package:mood_tracker/providers/selected_option_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -21,15 +20,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (context) => QuestionsController()),
-        ChangeNotifierProvider(create: (context) => SelectedOptionProvider()),
-      ],
-      child: const MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: HomeScreen(),
-      ),
+    return ChangeNotifierProvider(
+      create: (context) {
+        return QuestionsController();
+      },
+      builder: (context, child) {
+        return const MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: HomeScreen(),
+        );
+      },
     );
   }
 }
