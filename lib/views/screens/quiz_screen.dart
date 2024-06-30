@@ -53,7 +53,10 @@ class _QuizScreenState extends State<QuizScreen> {
                     return QuizItem(
                         orderNumber: orderNumber,
                         question: question.question,
+                        correctAnswerID: question.correctAnswerID,
                         variants: question.variants,
+                        currentIndex: index,
+                        contentLength: questions.length - 1,
                         nextPage: () {
                           Future.delayed(const Duration(milliseconds: 500), () {
                             _pageController.nextPage(

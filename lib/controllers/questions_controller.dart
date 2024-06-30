@@ -4,14 +4,19 @@ import 'package:mood_tracker/services/questions_firebase_services.dart';
 
 class QuestionsController extends ChangeNotifier {
   final _questionsFirebaseServices = QuestionsFirebaseServices();
+  int _correctAnswersCount = 0;
+
+  int get getCorrectAnswerCount => _correctAnswersCount;
 
   Stream<QuerySnapshot> get list {
     return _questionsFirebaseServices.getQuestions();
   }
 
-  int _correctAnswersCount = 0;
-
   void addCorrectAnswer() {
     _correctAnswersCount++;
+  }
+
+  void resetScore() {
+    _correctAnswersCount = 0;
   }
 }
