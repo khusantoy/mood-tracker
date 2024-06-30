@@ -38,7 +38,7 @@ class _QuizItemState extends State<QuizItem> {
   bool _showWidget = true;
 
   void _removeWidgetAfterDelay() {
-    Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 2), () {
       setState(() {
         _showWidget = false;
       });
@@ -118,11 +118,11 @@ class _QuizItemState extends State<QuizItem> {
                                   widget.nextPage!();
                                   if (widget.correctAnswerID == value) {
                                     questionManage.addCorrectAnswer();
-                                    _removeWidgetAfterDelay();
                                   }
                                   if (widget.currentIndex ==
                                       widget.contentLength) {
                                     isQuizCompleted = true;
+                                    _removeWidgetAfterDelay();
                                   }
                                 });
                               },
@@ -139,6 +139,5 @@ class _QuizItemState extends State<QuizItem> {
         ),
       ),
     );
-    ;
   }
 }
