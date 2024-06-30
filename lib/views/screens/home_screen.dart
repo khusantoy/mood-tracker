@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mood_tracker/controllers/questions_controller.dart';
+import 'package:mood_tracker/views/screens/manage_quiz_screen.dart';
 import 'package:mood_tracker/views/screens/quiz_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -60,7 +61,14 @@ class HomeScreen extends StatelessWidget {
                       foregroundColor: Colors.white,
                       backgroundColor: Colors.blue,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (ctx) => const ManageQuizScreen(),
+                        ),
+                      );
+                    },
                     child: const Text(
                       "Manage Quiz",
                       style: TextStyle(
